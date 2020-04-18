@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PointOfSales.SalesCenter", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PointOfSales.SalesCenter.Application", "PointOfSales.SalesCenter.Application\PointOfSales.SalesCenter.Application.csproj", "{B8240603-BB0D-4BC9-8A8E-BE0BB0E49C0C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreLibrary", "..\CoreLibrary\CoreLibrary\CoreLibrary.csproj", "{1A2FB657-A9E1-4950-A5B2-513F5B8BF429}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B8240603-BB0D-4BC9-8A8E-BE0BB0E49C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8240603-BB0D-4BC9-8A8E-BE0BB0E49C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8240603-BB0D-4BC9-8A8E-BE0BB0E49C0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A2FB657-A9E1-4950-A5B2-513F5B8BF429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A2FB657-A9E1-4950-A5B2-513F5B8BF429}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A2FB657-A9E1-4950-A5B2-513F5B8BF429}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A2FB657-A9E1-4950-A5B2-513F5B8BF429}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
