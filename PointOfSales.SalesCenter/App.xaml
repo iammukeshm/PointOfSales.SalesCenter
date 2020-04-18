@@ -1,0 +1,51 @@
+﻿<Application x:Class="PointOfSales.SalesCenter.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PointOfSales.SalesCenter"
+             StartupUri="MainWindow.xaml"
+             xmlns:ui="http://schemas.modernwpf.com/2019" xmlns:presets="clr-namespace:PointOfSales.SalesCenter.Presets">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ui:ThemeResources>
+                    <ui:ThemeResources.ThemeDictionaries>
+                        <ResourceDictionary x:Key="Light" ui:ThemeDictionary.Key="Light">
+                            <ResourceDictionary.MergedDictionaries>
+                                <presets:ColorPresetResources TargetTheme="Light" />
+                            </ResourceDictionary.MergedDictionaries>
+                            <SolidColorBrush x:Key="AppBackgroundBrush" Color="#FFF1F1F1" />
+                            <SolidColorBrush x:Key="AppContentBackgroundBrush" Color="{StaticResource SystemAltHighColor}" />
+                            <SolidColorBrush x:Key="RegionBrush" Color="White" />
+                            <SolidColorBrush x:Key="CustomThemeBrush" Color="Red" />
+                        </ResourceDictionary>
+
+                        <ResourceDictionary x:Key="Dark" ui:ThemeDictionary.Key="Dark">
+                            <ResourceDictionary.MergedDictionaries>
+                                <presets:ColorPresetResources TargetTheme="Dark" />
+                            </ResourceDictionary.MergedDictionaries>
+                            <SolidColorBrush x:Key="AppBackgroundBrush" Color="#FF232323" />
+                            <SolidColorBrush x:Key="AppContentBackgroundBrush" Color="#FF282828" />
+                            <SolidColorBrush x:Key="RegionBrush" Color="Black" />
+                            <SolidColorBrush x:Key="CustomThemeBrush" Color="Yellow" />
+                        </ResourceDictionary>
+
+                        <ResourceDictionary x:Key="HighContrast" ui:ThemeDictionary.Key="HighContrast">
+                            <SolidColorBrush x:Key="AppBackgroundBrush" Color="{ui:ThemeResource SystemColorWindowColor}" />
+                            <SolidColorBrush x:Key="AppContentBackgroundBrush" Color="{ui:ThemeResource SystemColorWindowColor}" />
+                            <SolidColorBrush x:Key="RegionBrush" Color="Transparent" />
+                            <SolidColorBrush x:Key="CustomThemeBrush" Color="Blue" />
+                        </ResourceDictionary>
+                    </ui:ThemeResources.ThemeDictionaries>
+                </ui:ThemeResources>
+                <ui:XamlControlsResources />
+
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="ControlPageStyle" TargetType="UserControl">
+                <Setter Property="Background" Value="{DynamicResource SystemControlPageBackgroundAltHighBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlPageTextBaseHighBrush}" />
+                <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
+                <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
