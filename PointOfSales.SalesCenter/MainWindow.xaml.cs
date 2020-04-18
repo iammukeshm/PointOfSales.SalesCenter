@@ -97,7 +97,6 @@ namespace PointOfSales.SalesCenter
         public ControlPagesData()
         {
             AddPage(typeof(LoginPage), "Login");
-            AddPage(typeof(UserControl1), "UserControl1");
            
         }
 

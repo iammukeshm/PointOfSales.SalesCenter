@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="PointOfSales.SalesCenter.DashboardPages.WelcomePage"
+﻿<UserControl x:Class="PointOfSales.SalesCenter.DashboardPages.HomePage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -27,7 +27,7 @@
 
                 <Border
                     VerticalAlignment="Top">
-                    <local:WelcomePageContent
+                    <local:HomePageContent
                         x:Name="welcomePageContentClass"
                         Title="{Binding Path=welcomeTitle}"
                         FontWeight="Light"

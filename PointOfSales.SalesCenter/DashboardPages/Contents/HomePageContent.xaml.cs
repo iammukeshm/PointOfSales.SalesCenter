@@ -7,10 +7,11 @@ namespace PointOfSales.SalesCenter.DashboardPages.Contents
     /// <summary>
     /// Interaction logic for WelcomePageContent.xaml
     /// </summary>
-    public partial class WelcomePageContent : UserControl
+    public partial class HomePageContent : UserControl
     {
-        public WelcomePageContent()
+        public HomePageContent()
         {
+
             InitializeComponent();
             DataContext = new DC();
         }
@@ -25,7 +26,7 @@ namespace PointOfSales.SalesCenter.DashboardPages.Contents
         public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(
             nameof(Title),
             typeof(string),
-            typeof(WelcomePageContent),
+            typeof(HomePageContent),
             new PropertyMetadata(string.Empty));
 
         #endregion
@@ -40,5 +41,14 @@ namespace PointOfSales.SalesCenter.DashboardPages.Contents
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new SalesCenter
+            {
+                Owner = Window.GetWindow(this)
+            };
+
+            window.ShowDialog();
+        }
     }
 }

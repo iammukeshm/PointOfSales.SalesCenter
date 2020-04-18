@@ -28,7 +28,9 @@ namespace PointOfSales.SalesCenter
         public Dashboard()
         {
             System.Windows.Application.Current.Resources[AutoHideScrollBarsKey] = true;
+            System.Windows.Application.Current.Resources[SystemParameters.DropShadowKey] = false;
             InitializeComponent();
+            DataContext = new DC();
             Current = this;
             RootFrame = rootFrame;
             System.Windows.Application.Current.Resources[AutoHideScrollBarsKey] = true;
@@ -46,7 +48,15 @@ namespace PointOfSales.SalesCenter
             }
         }
         public bool isClosing = false;
+        public class DC
+        {
+            public string userName { get; set; }
 
+            public DC()
+            {
+                userName = $"{SessionContext.Name}";
+            }
+        }
         private async void close_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if(!isClosing)
@@ -60,7 +70,6 @@ namespace PointOfSales.SalesCenter
                     mainWindow.Show();
                     var myWindow = Window.GetWindow(this);
                     myWindow.Close();
-                    this.SwitchTheme(this, ref mainWindow);
                 }
                 else
                 {
@@ -73,19 +82,6 @@ namespace PointOfSales.SalesCenter
             }
             
             
-        }
-        private void SwitchTheme(Dashboard dashboard, ref MainWindow mainPage)
-        {
-            ElementTheme newTheme;
-            if (ThemeManager.GetActualTheme(dashboard) == ElementTheme.Dark)
-            {
-                newTheme = ElementTheme.Dark;
-            }
-            else
-            {
-                newTheme = ElementTheme.Light;
-            }
-            ThemeManager.SetRequestedTheme(mainPage, newTheme);
         }
         private void ThemeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -137,7 +133,7 @@ namespace PointOfSales.SalesCenter
     {
         public DashboardPagesData()
         {
-            AddPage(typeof(WelcomePage), "Welcome");
+            AddPage(typeof(HomePage), "Home");
 
         }
 

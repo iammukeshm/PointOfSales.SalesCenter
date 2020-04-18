@@ -1,9 +1,4 @@
 ﻿using CoreLibrary.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Net.Security;
-using System.Text;
-using System.Windows.Documents.DocumentStructures;
 
 namespace PointOfSales.SalesCenter.Common
 {

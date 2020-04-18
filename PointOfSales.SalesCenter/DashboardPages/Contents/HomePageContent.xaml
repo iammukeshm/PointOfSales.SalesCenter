@@ -1,5 +1,5 @@
 ﻿<UserControl x:Name="Root"
-    x:Class="PointOfSales.SalesCenter.DashboardPages.Contents.WelcomePageContent"
+    x:Class="PointOfSales.SalesCenter.DashboardPages.Contents.HomePageContent"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -41,31 +41,11 @@
                 Text="{Binding ElementName=Root, Path=Title}" />
         </Border>
 
-        <HeaderedContentControl Header="Buttons">
-            <ui:SimpleStackPanel>
-                <Button
-                    x:Name="Button"
-                    Content="Enabled button" />
-                <Button
-                    Content="Disabled button"
-                    IsEnabled="False" />
-                <ToggleButton Content="Toggle button" />
-                <ToggleButton
-                    Content="Toggled button"
-                    IsChecked="True" />
-                <Button
+        <ui:SimpleStackPanel>
+            <Button
                     Style="{DynamicResource AccentButtonStyle}"
-                    Content="Enabled accent button" />
-                <Button
-                    Style="{DynamicResource AccentButtonStyle}"
-                    Content="Disabled accent button"
-                    IsEnabled="False" />
-            </ui:SimpleStackPanel>
-        </HeaderedContentControl>
-
-        <HeaderedContentControl Header="Date picker">
-            <DatePicker Width="200" />
-        </HeaderedContentControl>
-
+                    Content="Open Sales Center" 
+                    Click="Button_Click"/>
+        </ui:SimpleStackPanel>
     </StackPanel>
 </UserControl>

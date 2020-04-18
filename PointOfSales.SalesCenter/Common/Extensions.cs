@@ -20,8 +20,9 @@ namespace PointOfSales.SalesCenter.Common
             {
                 newTheme = ElementTheme.Dark;
             }
+            ApplicationSettings.Theme = newTheme;
             //ThemeManager.Current.AccentColor = Colors.Red;
-            ThemeManager.SetRequestedTheme(element, newTheme);
+            ThemeManager.SetRequestedTheme(element, ApplicationSettings.Theme);
         }
         public static void TransferThemeToAnotherWindow(this FrameworkElement source, ref FrameworkElement target)
         {

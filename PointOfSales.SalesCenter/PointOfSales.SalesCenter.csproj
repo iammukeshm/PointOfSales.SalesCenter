@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\CoreLibrary\CoreLibrary\CoreLibrary.csproj" />
     <ProjectReference Include="..\PointOfSales.SalesCenter.Application\PointOfSales.SalesCenter.Application.csproj" />
   </ItemGroup>
 

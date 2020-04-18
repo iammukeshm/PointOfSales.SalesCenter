@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PointOfSales.SalesCenter.Common;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,20 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PointOfSales.SalesCenter.ControlPages
+namespace PointOfSales.SalesCenter.DashboardPages
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for WelcomePage.xaml
     /// </summary>
-    public partial class UserControl1 
+    public partial class HomePage
     {
-        public UserControl1()
+        public HomePage()
         {
+
             InitializeComponent();
         }
-
-        ~UserControl1()
+        ~HomePage()
         {
+
         }
     }
 }
