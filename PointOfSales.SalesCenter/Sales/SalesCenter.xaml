@@ -1,0 +1,80 @@
+﻿<Window x:Class="PointOfSales.SalesCenter.SalesCenter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PointOfSales.SalesCenter"
+        xmlns:co="clr-namespace:PointOfSales.SalesCenter.Sales.Components"
+        mc:Ignorable="d"
+        Title="Sales Center" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        WindowStyle="None"
+        x:Name="salesCenter"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+    ui:WindowHelper.UseModernWindowStyle="True" Loaded="Window_Loaded">
+    <Grid>
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Menu VerticalAlignment="Top">
+
+                <MenuItem
+                    x:Name="DebugMenuItem"
+                    Header="Debug"
+                    Visibility="Visible">
+                    <MenuItem
+                        Header="Force GC"
+                         />
+                </MenuItem>
+            </Menu>
+            <ui:CommandBar
+                x:Name="TopCommandBar"
+                Grid.Column="1"
+                Margin="0,0,12,0"
+                Background="Transparent"
+                DefaultLabelPosition="Right">
+                <ui:AppBarButton x:Name="ThemeButton" Click="ThemeButton_Click"  Label="Toggle Theme">
+                    <ui:AppBarButton.Icon>
+                        <ui:FontIcon
+                            Glyph="&#xE771;"
+                            Margin="0,-2,0,0" />
+                    </ui:AppBarButton.Icon>
+                </ui:AppBarButton>
+            </ui:CommandBar>
+        </Grid>
+
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" Width="Auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="0.4*" />
+                <ColumnDefinition Width="0.4*" />
+            </Grid.ColumnDefinitions>
+            <Border Padding="10" BorderBrush="Gainsboro" BorderThickness="1" CornerRadius="3"
+          VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="0" Margin="12">
+                <co:CustomerComponent x:Name="customerComponent"/>
+            </Border>
+            <Border Padding="10" Margin="12" BorderBrush="Gainsboro" BorderThickness="1" CornerRadius="3"
+          VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1">
+                <co:ProductListComponent x:Name="productListComponent"/>
+            </Border>
+            <Grid Grid.Column="2" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.7*"/>
+                    <RowDefinition Height="0.3*"/>
+                </Grid.RowDefinitions>
+                <Border Padding="10" Margin="12" BorderBrush="Gainsboro" BorderThickness="1" CornerRadius="3"
+          VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0">
+                    <co:CartComponent x:Name="cartComponent"/>
+                </Border>
+                <Border Padding="10" Margin="12" BorderBrush="Gainsboro" BorderThickness="1" CornerRadius="3"
+          VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1">
+                    <co:TotalComponent x:Name="totalComponent"/>
+                </Border>
+            </Grid>
+
+        </Grid>
+    </Grid>
+    
+
+</Window>

@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="PointOfSales.SalesCenter.Sales.Components.CartComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSales.SalesCenter.Sales.Components" xmlns:ui="http://schemas.modernwpf.com/2019"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" x:Name="cartComponent">
+    <UserControl.Resources>
+        <DataTemplate x:Key="CartViewTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ui:SimpleStackPanel Orientation="Vertical" Spacing="2" Margin="6" Grid.Column="1" >
+                    <TextBlock Style="{DynamicResource BaseTextBlockStyle}" Text="{Binding Path=Name}"/>
+                    <TextBlock
+                    Text="{Binding Path=Barcode, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{DynamicResource BodyTextBlockStyle}"
+                     />
+                    <TextBlock  Style="{DynamicResource BaseTextBlockStyle}" >
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} * {1}">
+                                <Binding Path="QuantityInCart" Mode="OneWay" UpdateSourceTrigger="PropertyChanged" />
+                                <Binding Path="Rate" Mode="OneWay" UpdateSourceTrigger="PropertyChanged" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+
+                </ui:SimpleStackPanel>
+
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition Height=".9*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Margin="12" Text="Cart" Style="{StaticResource HeaderTextBlockStyle}" FontSize="30" />
+        <ui:ListView
+            
+                    x:Name="CartListView"
+                    ItemTemplate="{StaticResource CartViewTemplate}"
+                    SelectionMode="Single"
+                Grid.Row="1"
+                    BorderThickness="0"
+                    BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"  />
+
+    </Grid>
+</UserControl>

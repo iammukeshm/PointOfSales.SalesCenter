@@ -1,4 +1,9 @@
 ﻿using CoreLibrary.Helpers;
+using PointOfSales.SalesCenter.Application.Constants;
+using PointOfSales.SalesCenter.Application.Models.Account;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PointOfSales.SalesCenter.Common
 {
@@ -13,18 +18,10 @@ namespace PointOfSales.SalesCenter.Common
         public static ApiHelper ApiHelper { get; set; }
         public static bool IsAuthenticated { get; set; } = false;
 
-        public static void Authenticate(string firstName, string lastName, string userName,string email, string phoneNumer, string token)
-        {
-            Name = $"{firstName} {lastName}";
-            UserName = userName;
-            FirstName = firstName;
-            LastName = lastName;
-            Email = email;
-            PhoneNumber = phoneNumer;
-            ApiHelper = new ApiHelper(ApplicationSettings.ApiBaseAddress);
-            ApiHelper.AddJwtAuthorization(token);
-            IsAuthenticated = true;
-        }
+        public static bool IsAdmin { get; set; } = false;
+
+        public static List<string> Roles{ get; set; }
+
         public static void Kill()
         {
             Name = string.Empty;
@@ -35,6 +32,26 @@ namespace PointOfSales.SalesCenter.Common
             PhoneNumber = string.Empty;
             ApiHelper = null;
             IsAuthenticated = false;
+            IsAdmin = false;
+            Roles = null;
+        }
+
+        internal static void Authenticate(LoggedInUser data, string accessToken)
+        {
+            Name = $"{data.FirstName} {data.LastName}";
+            UserName = data.UserName;
+            FirstName = data.FirstName;
+            LastName = data.LastName;
+            Email = data.Email;
+            PhoneNumber = data.PhoneNumber;
+            Roles = data.Roles;
+            ApiHelper = new ApiHelper(ApplicationSettings.ApiBaseAddress);
+            ApiHelper.AddJwtAuthorization(data.Token);
+            IsAuthenticated = true;
+            if(data.Roles.Any(a=>a == AuthorizationConstants.Roles.Administrator.ToString()))
+            {
+                IsAdmin = true;
+            }
         }
     }
 }

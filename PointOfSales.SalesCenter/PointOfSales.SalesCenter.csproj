@@ -15,4 +15,8 @@
     <ProjectReference Include="..\PointOfSales.SalesCenter.Application\PointOfSales.SalesCenter.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>

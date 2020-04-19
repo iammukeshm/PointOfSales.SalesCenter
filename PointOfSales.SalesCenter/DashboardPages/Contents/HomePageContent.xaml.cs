@@ -1,4 +1,5 @@
 ﻿using PointOfSales.SalesCenter.Common;
+using PointOfSales.SalesCenter.Enums;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -41,14 +42,22 @@ namespace PointOfSales.SalesCenter.DashboardPages.Contents
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            var window = new SalesCenter
+            if (UIFunctions.IsUserAuthorizedForView(Views.SalesCenter))
             {
-                Owner = Window.GetWindow(this)
-            };
+                var window = new SalesCenter
+                {
+                    Owner = Window.GetWindow(this)
+                };
 
-            window.ShowDialog();
+                window.ShowDialog();
+            }
+            else
+            {
+                await Dialog.UserNotAuthorizedDialog();
+            }
+           
         }
     }
 }

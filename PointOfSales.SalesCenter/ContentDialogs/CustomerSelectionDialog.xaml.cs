@@ -27,7 +27,7 @@ namespace PointOfSales.SalesCenter.ContentDialogs
     {
         public List<PersonViewModel> people = new List<PersonViewModel>();
 
-        ObservableCollection<PersonViewModel> peopleFiltered = new ObservableCollection<PersonViewModel>();
+        public ObservableCollection<PersonViewModel> peopleFiltered = new ObservableCollection<PersonViewModel>();
         public CustomerSelectionDialog()
         {
             
@@ -36,11 +36,7 @@ namespace PointOfSales.SalesCenter.ContentDialogs
 
         private async void ContentDialog_Opened(ModernWpf.Controls.ContentDialog sender, ModernWpf.Controls.ContentDialogOpenedEventArgs args)
         {
-            var api = SessionContext.ApiHelper;
-            var result = await api.GetAsync<Result<List<PersonViewModel>>>("api/v1/People");
-            people = result.Data;
-             peopleFiltered = new ObservableCollection<PersonViewModel>(people);
-            FilteredListView.ItemsSource = peopleFiltered;
+            
         }
 
         private void OnFilterChanged(object sender, TextChangedEventArgs e)
@@ -99,7 +95,7 @@ namespace PointOfSales.SalesCenter.ContentDialogs
            else
             {
                 var selectedCustomer = (PersonViewModel)FilteredListView.SelectedItem;
-                this.Tag = selectedCustomer.Id;
+                this.Tag = selectedCustomer;
             }
             
         }

@@ -90,6 +90,30 @@
                     
                 </Grid>
             </DataTemplate>
+            <DataTemplate x:Key="ProductListViewTemplate">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <ui:SimpleStackPanel Orientation="Vertical" Spacing="2" Margin="6" Grid.Column="1" >
+                        <TextBlock Style="{DynamicResource BaseTextBlockStyle}" Text="{Binding Path=Name}"/>
+                        <TextBlock
+                    Text="{Binding Path=Barcode}"
+                    Style="{DynamicResource BodyTextBlockStyle}"
+                     />
+                        <TextBlock  Style="{DynamicResource BaseTextBlockStyle}" >
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} | {1}">
+                                    <Binding Path="RetailPrice" />
+                                    <Binding Path="RetailPrice" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+
+                    </ui:SimpleStackPanel>
+
+                </Grid>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -30,23 +30,18 @@ namespace PointOfSales.SalesCenter.ControlPages
             try
             {
                 var result = await api.PostAsync<Result<LoggedInUser>>("api/Account/login", data);
-                
-
-
-
                 if (result.Succeeded)
                 {
 
                     var accessToken = result.Data.Token;
                     api.AddJwtAuthorization(accessToken);
-                    await Dialog.InformationDialogResult("Success!", result.Messages[0]);
+                    //await Dialog.InformationDialogResult("Success!", result.Messages[0]);
 
-                    SessionContext.Authenticate(result.Data.FirstName, result.Data.LastName, result.Data.UserName,result.Data.Email, result.Data.PhoneNumber, accessToken);
+                    SessionContext.Authenticate(result.Data, accessToken);
                     Dashboard dashboard = new Dashboard();
                     //dashboard.header.Text = $"welcome, {email.Text}";
                     dashboard.Show();
-
-                    var myWindow = Window.GetWindow(this);
+                    var myWindow = Window.GetWindow(this); 
                     myWindow.Close();
 
                     this.SwitchTheme(this, ref dashboard);
@@ -55,14 +50,14 @@ namespace PointOfSales.SalesCenter.ControlPages
                 }
                 else
                 {
-                    await Dialog.InformationDialogResult("Failed!", result.Messages[0]);
+                    await Dialog.InformationDialog("Failed!", result.Messages[0]);
                     
                 }
             }
             catch (Exception ex)
             {
 
-                await Dialog.InformationDialogResult("Exception!", ex.Message);
+                await Dialog.InformationDialog("Exception!", ex.Message);
             }
             finally
             {

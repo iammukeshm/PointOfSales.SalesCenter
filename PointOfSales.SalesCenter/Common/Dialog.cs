@@ -23,12 +23,38 @@ namespace PointOfSales.SalesCenter.Common
             ContentDialogResult contentResult = await noWifiDialog.ShowAsync();
             return contentResult;
         }
-        public async static Task<ContentDialogResult> InformationDialogResult(string title, string content)
+        public async static Task<ContentDialogResult> InformationDialog(string title, string content)
         {
             ContentDialog noWifiDialog = new ContentDialog
             {
                 Title = title,
                 Content = content,
+                CloseButtonText = "Ok",
+                IsShadowEnabled = false
+            };
+
+            ContentDialogResult contentResult = await noWifiDialog.ShowAsync();
+            return contentResult;
+        }
+        public async static Task<ContentDialogResult> UserNotAuthorizedDialog()
+        {
+            ContentDialog noWifiDialog = new ContentDialog
+            {
+                Title = "Not Authorized!",
+                Content = $"You are not authorized to view this page! Please contact the Administrator.",
+                CloseButtonText = "Ok",
+                IsShadowEnabled = false
+            };
+
+            ContentDialogResult contentResult = await noWifiDialog.ShowAsync();
+            return contentResult;
+        }
+        public async static Task<ContentDialogResult> UserNotAuthorizedToUseApiEndpointDialog(string endPoint)
+        {
+            ContentDialog noWifiDialog = new ContentDialog
+            {
+                Title = "Not Authorized!",
+                Content = $"You are not authorized to access the API Endpoint - {endPoint} ! Please contact the Administrator.",
                 CloseButtonText = "Ok",
                 IsShadowEnabled = false
             };
