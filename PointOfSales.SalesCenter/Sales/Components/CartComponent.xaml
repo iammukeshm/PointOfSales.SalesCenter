@@ -20,9 +20,10 @@
                      />
                     <TextBlock  Style="{DynamicResource BaseTextBlockStyle}" >
                         <TextBlock.Text>
-                            <MultiBinding StringFormat="{}{0} * {1}">
+                            <MultiBinding StringFormat="{}{0} * {1}$ = {2}$">
                                 <Binding Path="QuantityInCart" Mode="OneWay" UpdateSourceTrigger="PropertyChanged" />
                                 <Binding Path="Rate" Mode="OneWay" UpdateSourceTrigger="PropertyChanged" />
+                                <Binding Path="Total" Mode="OneWay" UpdateSourceTrigger="PropertyChanged" />
                             </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>
@@ -32,12 +33,21 @@
             </Grid>
         </DataTemplate>
     </UserControl.Resources>
-    <Grid >
+    <Grid  Margin="12">
         <Grid.RowDefinitions>
-            <RowDefinition Height=".1*"/>
-            <RowDefinition Height=".9*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Margin="12" Text="Cart" Style="{StaticResource HeaderTextBlockStyle}" FontSize="30" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Cart"  Style="{StaticResource HeaderTextBlockStyle}" FontSize="30" />
+            <Button Grid.Column="1" Content="Clear"  Click="clearCartButton_Click" Height="30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" />
+        </Grid>
+        
+        
         <ui:ListView
             
                     x:Name="CartListView"

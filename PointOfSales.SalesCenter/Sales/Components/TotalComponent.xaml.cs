@@ -18,6 +18,8 @@ namespace PointOfSales.SalesCenter.Sales.Components
     /// </summary>
     public partial class TotalComponent : UserControl
     {
+
+
         public TotalComponent()
         {
             InitializeComponent();

@@ -13,8 +13,7 @@ namespace PointOfSales.SalesCenter.Application.Models.Product
         public string Description { get; set; }
 
         public int ProductGroupId { get; set; }
-        public decimal BuyingPrice { get; set; }
-        public decimal RetailPrice { get; set; }
+        public decimal Rate { get; set; }
 
     }
 }

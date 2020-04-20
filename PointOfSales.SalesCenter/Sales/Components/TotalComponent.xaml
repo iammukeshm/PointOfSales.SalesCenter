@@ -7,7 +7,31 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <ui:SimpleStackPanel Margin="12" Spacing="12">
+        
         <TextBlock Text="Total" Style="{StaticResource HeaderTextBlockStyle}" FontSize="30" />
-       
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".7*"/>
+                <ColumnDefinition Width=".3*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Sub-Total" Style="{StaticResource HeaderTextBlockStyle}" FontSize="15" />
+            <TextBlock Grid.Column="1" Name="subTotalTextBox" Style="{StaticResource HeaderTextBlockStyle}" FontSize="15" />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".7*"/>
+                <ColumnDefinition Width=".3*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Total Taxes" Style="{StaticResource HeaderTextBlockStyle}" FontSize="15" />
+            <TextBlock Grid.Column="1" Name="totalTaxTextBox" Style="{StaticResource HeaderTextBlockStyle}" FontSize="15" />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".7*"/>
+                <ColumnDefinition Width=".3*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Total" Style="{StaticResource HeaderTextBlockStyle}" FontSize="15" />
+            <TextBlock Grid.Column="1" Name="totalTextBox" Style="{StaticResource HeaderTextBlockStyle}" FontSize="15" />
+        </Grid>
     </ui:SimpleStackPanel>
 </UserControl>

@@ -12,6 +12,7 @@ namespace PointOfSales.SalesCenter.Application.Models.Cart
         public string Name { get; set; }
         public decimal Rate { get; set; }
         public string Barcode { get; set; }
+        public decimal Total { get; set; }
         public int QuantityInCart { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -12,7 +12,11 @@
         xmlns:ui="http://schemas.modernwpf.com/2019"
     ui:WindowHelper.UseModernWindowStyle="True" Loaded="Window_Loaded">
     <Grid>
-        <Grid Grid.ColumnSpan="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.ColumnSpan="2" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto" />
@@ -44,7 +48,7 @@
             </ui:CommandBar>
         </Grid>
 
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" Width="Auto">
+        <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" Width="Auto">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.2*" />
                 <ColumnDefinition Width="0.4*" />
@@ -67,10 +71,20 @@
           VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0">
                     <co:CartComponent x:Name="cartComponent"/>
                 </Border>
-                <Border Padding="10" Margin="12" BorderBrush="Gainsboro" BorderThickness="1" CornerRadius="3"
+                <Grid  Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Padding="10" Margin="12" BorderBrush="Gainsboro" BorderThickness="1" CornerRadius="3"
           VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1">
-                    <co:TotalComponent x:Name="totalComponent"/>
-                </Border>
+                        <co:TotalComponent x:Name="totalComponent"/>
+                    </Border>
+                    <Border Grid.Column="1" Padding="10" Margin="12" BorderBrush="Gainsboro" BorderThickness="1" CornerRadius="3"
+          VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1">
+                       <Button Grid.Column="1" Content="Clear"  Height="30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" />
+                    </Border>
+                </Grid>
             </Grid>
 
         </Grid>

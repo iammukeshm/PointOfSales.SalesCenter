@@ -103,9 +103,8 @@
                      />
                         <TextBlock  Style="{DynamicResource BaseTextBlockStyle}" >
                             <TextBlock.Text>
-                                <MultiBinding StringFormat="{}{0} | {1}">
-                                    <Binding Path="RetailPrice" />
-                                    <Binding Path="RetailPrice" />
+                                <MultiBinding StringFormat="{}{0}$">
+                                    <Binding Path="Rate" />
                                 </MultiBinding>
                             </TextBlock.Text>
                         </TextBlock>

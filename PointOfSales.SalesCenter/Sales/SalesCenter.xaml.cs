@@ -23,33 +23,50 @@ namespace PointOfSales.SalesCenter
     /// </summary>
     public partial class SalesCenter : Window
     {
-        public CartModel cart = new CartModel();
         public DC context = new DC();
-        public ProductListComponent _productComponent = new ProductListComponent();
         public SalesCenter()
         {
             InitializeComponent();
             customerComponent.GetDataFromChild += new CustomerComponent.ChildDelegate(UpdateDataFromCustomerComponent);
             productListComponent.GetProduct += new ProductListComponent.ChildDelegate(UpdateCart);
+            cartComponent.EmptyCart += new CartComponent.ChildDelegate(EmptyCart);
             cartComponent.CartListView.ItemsSource = context.CartItems;
+            UpdateTotals(context.CartItems.Sum(a=>a.Total));
         }
 
+        private void EmptyCart()
+        {
+            this.context.CartItems = new ObservableCollection<CartDetailModel>();
+            cartComponent.CartListView.ItemsSource = context.CartItems;
+            UpdateTotals(0);
+        }
+        private void UpdateTotals(decimal subTotal)
+        {
+            totalComponent.subTotalTextBox.Text = $"{subTotal}$";
+            totalComponent.totalTaxTextBox.Text = $"{subTotal * GetTax()}$";
+            totalComponent.totalTextBox.Text = $"{subTotal * GetTax() + context.CartItems.Sum(a => a.Total)}$";
+
+        }
         private void UpdateCart(ProductViewModel data)
         {
-           
-            if(context.CartItems.Any(a=>a.ProductId == data.Id))
+
+            if (context.CartItems.Any(a => a.ProductId == data.Id))
             {
                 //Item Exists
 
-                
-                foreach(CartDetailModel item in context.CartItems)
+
+                foreach (CartDetailModel item in context.CartItems)
                 {
-                    if(item.ProductId == data.Id)
+                    if (item.ProductId == data.Id)
                     {
                         item.QuantityInCart++;
+                        item.Total = item.QuantityInCart * item.Rate;
                         item.OnPropertyChange("QuantityInCart");
+                        item.OnPropertyChange("Total");
                     }
                 }
+                UpdateTotals(context.CartItems.Sum(a => a.Total));
+
             }
             else
             {
@@ -58,14 +75,16 @@ namespace PointOfSales.SalesCenter
                     ProductId = data.Id,
                     QuantityInCart = 1,
                     Name = data.Name,
-                    Rate = data.RetailPrice,
-                    Barcode = data.Barcode
+                    Rate = data.Rate,
+                    Barcode = data.Barcode,
+                    Total = data.Rate
 
                 };
+                UpdateTotals(cartItem.Total);
                 context.CartItems.Add(cartItem);
             }
-           
-            
+
+
         }
 
         private void UpdateDataFromCustomerComponent(int customer)
@@ -80,7 +99,10 @@ namespace PointOfSales.SalesCenter
             public ObservableCollection<CartDetailModel> CartItems { get; set; } = new ObservableCollection<CartDetailModel>();
         }
 
-       
+        public decimal GetTax()
+        {
+            return 0.14m;
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
