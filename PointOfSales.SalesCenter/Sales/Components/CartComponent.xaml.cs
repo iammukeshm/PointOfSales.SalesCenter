@@ -22,9 +22,9 @@ namespace PointOfSales.SalesCenter.Sales.Components
     /// </summary>
     public partial class CartComponent : UserControl
     {
-        public List<CartDetailModel> cart = new List<CartDetailModel>();
+        public List<InvoiceDetailModel> cart = new List<InvoiceDetailModel>();
 
-        public ObservableCollection<CartDetailModel> cartFiltered = new ObservableCollection<CartDetailModel>();
+        public ObservableCollection<InvoiceDetailModel> cartFiltered = new ObservableCollection<InvoiceDetailModel>();
 
         public delegate void ChildDelegate();
 

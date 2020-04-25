@@ -46,8 +46,8 @@ namespace PointOfSales.SalesCenter.Sales.Components
             try
             {
                 var api = SessionContext.ApiHelper;
-                var result = await api.GetAsync<Result<List<ProductViewModel>>>(APIEndpoints.GetAllProduct);
-
+                var result = await api.GetAsync<Result<List<ProductViewModel>>>(APIEndpoints.Product);
+                result.Data.ToList().ForEach(a => a.Rate = Math.Round(a.Rate, GetRoundFactor()));
                 //Since Data Load and UI are on different threads, data thread cannot access elements of UI.
                 //So we access the Dispacther (Main Thread / UI) and Invoke method async to it.
                 this.Dispatcher.Invoke(() =>
@@ -61,11 +61,15 @@ namespace PointOfSales.SalesCenter.Sales.Components
                 {
                     await this.Dispatcher.InvokeAsync(async () =>
                     {
-                        await Dialog.UserNotAuthorizedToUseApiEndpointDialog(APIEndpoints.GetAllPeeople);
+                        await Dialog.UserNotAuthorizedToUseApiEndpointDialog(APIEndpoints.People);
                     });
 
                 }
             }
+        }
+        public int GetRoundFactor()
+        {
+            return 2;
         }
         private void PopulateDataToUI(List<ProductViewModel> data)
         {

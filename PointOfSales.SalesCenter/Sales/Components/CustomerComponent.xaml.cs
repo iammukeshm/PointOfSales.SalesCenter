@@ -65,7 +65,7 @@ namespace PointOfSales.SalesCenter.Sales.Components
             try
             {
                 var api = SessionContext.ApiHelper;
-                var result = await api.GetAsync<Result<List<PersonViewModel>>>(APIEndpoints.GetAllPeeople);
+                var result = await api.GetAsync<Result<List<PersonViewModel>>>(APIEndpoints.People);
 
                 //Since Data Load and UI are on different threads, data thread cannot access elements of UI.
                 //So we access the Dispacther (Main Thread / UI) and Invoke method async to it.
@@ -81,7 +81,7 @@ namespace PointOfSales.SalesCenter.Sales.Components
                     await this.Dispatcher.InvokeAsync(async () =>
                     {
                         _customerDialog.Hide();
-                        await Dialog.UserNotAuthorizedToUseApiEndpointDialog(APIEndpoints.GetAllPeeople);
+                        await Dialog.UserNotAuthorizedToUseApiEndpointDialog(APIEndpoints.People);
                     });
 
                 }
@@ -94,6 +94,13 @@ namespace PointOfSales.SalesCenter.Sales.Components
             _customerDialog.peopleFiltered = new ObservableCollection<PersonViewModel>(_customerDialog.people);
             _customerDialog.FilteredListView.ItemsSource = _customerDialog.peopleFiltered;
 
+        }
+        public void ResetCustomer()
+        {
+            personName.Text = string.Empty;
+            personPicture.Initials = string.Empty;
+            personContact.Text = string.Empty;
+            personEmail.Text = string.Empty;
         }
     }
 }

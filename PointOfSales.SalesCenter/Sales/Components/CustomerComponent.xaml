@@ -7,8 +7,16 @@
              xmlns:ui="http://schemas.modernwpf.com/2019"
              mc:Ignorable="d" >
     <ui:SimpleStackPanel Margin="12" Spacing="12">
-        <TextBlock Text="Customer" Style="{StaticResource HeaderTextBlockStyle}" FontSize="30" />
-        <Button Content="Choose Customer" Click="Button_Click" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Customer" Style="{StaticResource HeaderTextBlockStyle}" FontSize="25" />
+            <Button x:Name="chooseButton" Grid.Column="1" HorizontalAlignment="Right" Content="Choose" Width="100" Click="Button_Click"  HorizontalContentAlignment="Center" VerticalAlignment="Stretch" />
+
+        </Grid>
         <ui:SimpleStackPanel x:Name="customerDetails" Orientation="Horizontal" Visibility="Collapsed" >
             <Grid>
                 <Grid.RowDefinitions>

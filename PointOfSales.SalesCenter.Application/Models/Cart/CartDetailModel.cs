@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PointOfSales.SalesCenter.Application.Models.Cart
 {
-    public class CartDetailModel : INotifyPropertyChanged
+    public class InvoiceDetailModel : INotifyPropertyChanged
     {
         public int ProductId { get; set; }
         public string Name { get; set; }

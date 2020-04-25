@@ -40,11 +40,11 @@
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.8*"/>
-                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="Cart"  Style="{StaticResource HeaderTextBlockStyle}" FontSize="30" />
-            <Button Grid.Column="1" Content="Clear"  Click="clearCartButton_Click" Height="30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" />
+            <TextBlock Grid.Column="0" Text="Cart"  Style="{StaticResource HeaderTextBlockStyle}" FontSize="25" />
+            <Button Grid.Column="1" HorizontalAlignment="Right" Content="Clear" Width="100"  Click="clearCartButton_Click" Height="30" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" />
         </Grid>
         
         

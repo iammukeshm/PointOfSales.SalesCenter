@@ -4,9 +4,8 @@ using System.Text;
 
 namespace PointOfSales.SalesCenter.Application.Models.Cart
 {
-    public class CartModel
+    public class CreateInvoiceCommand
     {
-        public List<CartDetailModel> CartDetails { get; set; }
-        public int CustomerId { get; set; }
+        public InvoiceModel invoice { get; set; }
     }
 }

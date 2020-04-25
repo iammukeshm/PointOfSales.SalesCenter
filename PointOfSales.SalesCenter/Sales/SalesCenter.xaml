@@ -50,14 +50,25 @@
 
         <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" Width="Auto">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="0.25*" />
                 <ColumnDefinition Width="0.4*" />
-                <ColumnDefinition Width="0.4*" />
+                <ColumnDefinition Width="0.35*" />
             </Grid.ColumnDefinitions>
-            <Border Padding="10" BorderBrush="Gainsboro" BorderThickness="1" CornerRadius="3"
-          VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="0" Margin="12">
-                <co:CustomerComponent x:Name="customerComponent"/>
-            </Border>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border Padding="10" BorderBrush="Gainsboro" BorderThickness="1" CornerRadius="3"
+          VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Margin="12" Grid.Row="0">
+                    <co:ProductGroupListElement x:Name="productGroupComponent"/>
+                </Border>
+                <Border Padding="10" BorderBrush="Gainsboro" BorderThickness="1" CornerRadius="3"
+          VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Margin="12" Grid.Row="1">
+                    <co:CustomerComponent x:Name="customerComponent"/>
+                </Border>
+            </Grid>
+           
             <Border Padding="10" Margin="12" BorderBrush="Gainsboro" BorderThickness="1" CornerRadius="3"
           VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1">
                 <co:ProductListComponent x:Name="productListComponent"/>
@@ -82,7 +93,7 @@
                     </Border>
                     <Border Grid.Column="1" Padding="10" Margin="12" BorderBrush="Gainsboro" BorderThickness="1" CornerRadius="3"
           VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1">
-                       <Button Grid.Column="1" Content="Clear"  Height="30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" />
+                       <Button Grid.Column="1" Content="Checkout" Name="CheckoutButton" Click="CheckoutButton_Click"  Height="30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" />
                     </Border>
                 </Grid>
             </Grid>
